@@ -3,7 +3,7 @@ import dotenv from 'dotenv';
 
 dotenv.config();
 
-const MONGO_URI = "mongodb+srv://admin:wearebrext@brext-teste.xfeveeo.mongodb.net/?retryWrites=true&w=majority&appName=brext-teste"
+const MONGO_URI = process.env.MONGO_URI
 
 if (!MONGO_URI) throw new Error("Mongo URI não definido. Verifique seu .env");
 
