@@ -1,40 +1,14 @@
-export class List {
-  private static lists: List[] = [];
-  private static currentId = 1;
+import mongoose, { Document, Schema } from 'mongoose';
+import { IUser } from './taskUser'
 
-  public id: number;
-  public name: string;
-  public userId: number;
-
-  constructor(name: string, userId: number) {
-    this.id = List.currentId++;
-    this.name = name;
-    this.userId = userId;
-  }
-
-  static create(name: string, userId: number) {
-    const list = new List(name, userId);
-    List.lists.push(list);
-    return list;
-  }
-
-  static getAll(userId: number) {
-    return List.lists.filter(l => l.userId === userId);
-  }
-
-  static getById(id: number, userId: number) {
-    return List.lists.find(l => l.id === id && l.userId === userId);
-  }
-
-  static update(id: number, userId: number, name: string) {
-    const list = List.getById(id, userId);
-    if (list) list.name = name;
-    return list;
-  }
-
-  static delete(id: number, userId: number) {
-    const index = List.lists.findIndex(l => l.id === id && l.userId === userId);
-    if (index >= 0) return List.lists.splice(index, 1)[0];
-    return null;
-  }
+export interface IList extends Document {
+  name: string;
+  user: IUser['_id'];
 }
+
+const ListSchema = new Schema<IList>({
+  name: { type: String, required: true },
+  user: { type: Schema.Types.ObjectId, ref: "User", required: true },
+});
+
+export const List = mongoose.model<IList>('List', ListSchema);
