@@ -1,6 +1,8 @@
 # API de Gestão de Tarefas
 
-API desenvolvida em **Node.js**, **Express**, **TypeScript** e **MongoDB** para gerenciamento de usuários, listas e tarefas.
+API desenvolvida em **Node.js**, **Express**, **TypeScript** e **MongoDB** para gerenciamento de usuários, listas e tarefas. 
+Foi extremamente gratificante poder ter a oportunidade de apresentar meus conhecimentos em forma de projeto. 
+Apesar dos tropeços pelo caminho, utilizar ferramentas novas é com certeza uma forma de inovação!
 
 ---
 
