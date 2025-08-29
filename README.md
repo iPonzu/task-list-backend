@@ -35,8 +35,8 @@ Apesar dos tropeços pelo caminho, utilizar ferramentas novas é com certeza uma
 1. Clone o repositório:
 
 ```bash
-git clone https://github.com/seu-usuario/nome-do-projeto.git
-cd nome-do-projeto
+git clone https://github.com/seu-usuario/BextTeste.git
+cd BextTeste
 ```
 
 2. Instale as dependências:
@@ -45,7 +45,13 @@ cd nome-do-projeto
 npm install
 ```
 
-3. Rodando a aplicação:
+3. Crie um arquivo `.env` na raiz com as variáveis:
+
+```env
+MONGO_URI=mongodb+srv://admin:wearebrext@brext-teste.xfeveeo.mongodb.net/?retryWrites=true&w=majority&appName=brext-teste
+```
+
+4. Rodando a aplicação:
 
 ```bash
 npm run dev
@@ -79,7 +85,6 @@ src/
 ├─ __tests__/         # Testes unitários e integração
 │
 ├─ server.ts          # Servidor Express
-└─ app.ts             # Inicialização da aplicação (opcional)
 ```
 
 ---
@@ -207,4 +212,3 @@ npm run test
 * Se quiser usar MongoDB Atlas, adicione seu IP na whitelist.
 * Para desenvolvimento, recomenda-se usar `.env` com `MONGO_URI` e `JWT_SECRET` locais.
 
----
