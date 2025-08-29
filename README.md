@@ -45,15 +45,7 @@ cd nome-do-projeto
 npm install
 ```
 
-3. Crie um arquivo `.env` na raiz com as variáveis:
-
-```env
-MONGO_URI=mongodb+srv://usuario:senha@cluster.mongodb.net/nome-do-banco
-JWT_SECRET=SUA_CHAVE_SECRETA
-PORT=3000
-```
-
-4. Rodando a aplicação:
+3. Rodando a aplicação:
 
 ```bash
 npm run dev
