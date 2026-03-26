@@ -3,11 +3,12 @@ import { List } from '../models/taskList'
 
 export const createList = async (req: any, res: Response) => {
     try{
-        const { name } = req.body
-        if(!name){ return res.status(400).json({message: "Nome da lista é obrigatório"})}
+        const { title } = req.body
+        if(!title){ return res.status(400).json({message: "Nome da lista é obrigatório"})}
 
-        const list = await List.create({ 
-            name, 
+        const list = await List.create({
+            id: Date.now(),
+            title, 
             user: req.userId 
         })
         return res.status(201).json(list)
@@ -44,7 +45,6 @@ export const updateList = async (req: any, res: Response) => {
     const { name } = req.body
 
     const updatedList = await List.findOneAndUpdate(
-        {_id: id, user: req.userId},
         { name },
         { new: true }
     )

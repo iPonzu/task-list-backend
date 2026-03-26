@@ -11,7 +11,7 @@ app.use((req, res, next) => {
 
 app.get("/", (_, res) => res.send("API rodando!"));
 
-app.use("/api", router);
+app.use("/", router);
 
 connectiondb().then(() => {
   app.listen(3000, () => console.log("Servidor rodando na porta 3000"));

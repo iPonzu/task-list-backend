@@ -1,4 +1,5 @@
 import { Request, Response } from "express"
+import mongoose from "mongoose"
 import { Task } from "../models/taskModels"
 import { List } from "../models/taskList"
 
@@ -55,7 +56,12 @@ export const getTaskById = async (req: any, res: Response) => {
   console.log("DEBUG getTaskById - userId:", req.userId, "params:", req.params);
   try {
     const { id } = req.params;
-    const task = await Task.findOne({ _id: id, user: req.userId });
+    
+    if (!mongoose.Types.ObjectId.isValid(id)) {
+      return res.status(400).json({ message: "ID da tarefa inválido" });
+    }
+    
+    const task = await Task.findOne({ _id: new mongoose.Types.ObjectId(id), user: req.userId });
 
     if (!task) return res.status(404).json({ message: "Tarefa não encontrada" });
     return res.json(task);
@@ -70,8 +76,12 @@ export const updateTask = async (req: any, res: Response) => {
     const { id } = req.params;
     const { title, description, dueDate, status } = req.body;
 
+    if (!mongoose.Types.ObjectId.isValid(id)) {
+      return res.status(400).json({ message: "ID da tarefa inválido" });
+    }
+
     const updatedTask = await Task.findOneAndUpdate(
-      { _id: id, user: req.userId },
+      { _id: new mongoose.Types.ObjectId(id), user: req.userId },
       {
         title,
         description,
@@ -93,7 +103,12 @@ export const deleteTask = async (req: any, res: Response) => {
   console.log("DEBUG deleteTask - userId:", req.userId, "params:", req.params);
   try {
     const { id } = req.params;
-    const deleteTask = await Task.findOneAndDelete({ _id: id, user: req.userId });
+    
+    if (!mongoose.Types.ObjectId.isValid(id)) {
+      return res.status(400).json({ message: "ID da tarefa inválido" });
+    }
+    
+    const deleteTask = await Task.findOneAndDelete({ _id: new mongoose.Types.ObjectId(id), user: req.userId });
 
     if (!deleteTask) return res.status(404).json({ message: "Tarefa não encontrada" });
     return res.json({ message: "Tarefa deletada" });

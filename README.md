@@ -35,8 +35,8 @@ Apesar dos tropeços pelo caminho, utilizar ferramentas novas é com certeza uma
 1. Clone o repositório:
 
 ```bash
-git clone https://github.com/seu-usuario/BextTeste.git
-cd BextTeste
+git clone https://github.com/seu-usuario/tasklist.git
+cd tasklist
 ```
 
 2. Instale as dependências:

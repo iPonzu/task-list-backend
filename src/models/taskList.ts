@@ -1,13 +1,15 @@
 import mongoose, { Document, Schema } from 'mongoose';
-import { IUser } from './taskUser'
+import { IUser } from './taskUser';
 
 export interface IList extends Document {
-  name: string;
+  id: int;
+  title: string;
   user: IUser['_id'];
 }
 
 const ListSchema = new Schema<IList>({
-  name: { type: String, required: true },
+  id: { type: Number, required: true, unique: true },
+  title: { type: String, required: true },
   user: { type: Schema.Types.ObjectId, ref: "User", required: true },
 });
 
