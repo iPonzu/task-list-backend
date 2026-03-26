@@ -35,7 +35,7 @@ Apesar dos tropeços pelo caminho, utilizar ferramentas novas é com certeza uma
 1. Clone o repositório:
 
 ```bash
-git clone https://github.com/seu-usuario/tasklist.git
+git clone https://github.com/seu-usuario/task-list-backend.git
 cd tasklist
 ```
 
@@ -48,7 +48,7 @@ npm install
 3. Crie um arquivo `.env` na raiz com as variáveis:
 
 ```env
-MONGO_URI=mongodb+srv://admin:wearebrext@brext-teste.xfeveeo.mongodb.net/?retryWrites=true&w=majority&appName=brext-teste
+MONGO_URI = "mongodb+srv://ponzu:qRX9hAAIMBRKReND@dbtask.ec8ughh.mongodb.net/?appName=dbTask"
 ```
 
 4. Rodando a aplicação:
