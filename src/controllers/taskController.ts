@@ -1,7 +1,6 @@
 import { Request, Response } from "express"
 import mongoose from "mongoose"
 import { Task } from "../models/taskModels"
-import { List } from "../models/taskList"
 
 
 const formatDate = (date?: Date | string | null): string | null => {
@@ -51,7 +50,7 @@ const mapTask = (task: any) => {
 export const createTask = async (req: any, res: Response) => {
   try {
     console.log("DEBUG createTask - userId:", req.userId, "body:", req.body);
-    const { title, description, status, dueDate, listId } = req.body;
+    const { title, description, status, dueDate } = req.body;
 
     const existingTask = await Task.findOne({ title, user: req.userId });
     if (existingTask) return res.status(400).json({ message: "Você já tem uma tarefa com esse nome" });
