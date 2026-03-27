@@ -14,5 +14,7 @@ app.get("/", (_, res) => res.send("API rodando!"));
 app.use("/", router);
 
 connectiondb().then(() => {
-  app.listen(3000, () => console.log("Servidor rodando na porta 3000"));
+  if (process.env.NODE_ENV !== "test") {
+    app.listen(3000, () => console.log("Servidor rodando na porta 3000"));
+  }
 });

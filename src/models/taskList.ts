@@ -1,16 +1,19 @@
-import mongoose, { Document, Schema } from 'mongoose';
-import { IUser } from './taskUser';
+import mongoose, { Document, Schema } from "mongoose";
+import { IUser } from "./taskUser";
 
 export interface IList extends Document {
-  id: int;
   title: string;
-  user: IUser['_id'];
+  user: IUser["_id"];
 }
 
-const ListSchema = new Schema<IList>({
-  id: { type: Number, required: true, unique: true },
-  title: { type: String, required: true },
-  user: { type: Schema.Types.ObjectId, ref: "User", required: true },
-});
+const TaskListSchema = new Schema<IList>(
+  {
+    title: { type: String, required: true },
+    user: { type: Schema.Types.ObjectId, ref: "User", required: true },
+  },
+  { timestamps: true }
+);
 
-export const List = mongoose.model<IList>('List', ListSchema);
+// evita erro de em ambiente de teste
+export const List =
+  mongoose.models.TaskList || mongoose.model<IList>("TaskList", TaskListSchema);

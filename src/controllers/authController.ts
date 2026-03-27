@@ -24,7 +24,7 @@ export const login = async (req: Request, res: Response) => {
 
     if(!user || user.password !== password) return res.status(401).json({ message: "Credenciais inválidas" });
 
-    const token = jwt.sign({ id: user._id }, SECRET, { expiresIn: "24h" });
+    const token = jwt.sign({ id: user._id }, SECRET, { expiresIn: "160h" });
     return res.json({ token })
 }
 
