@@ -13,7 +13,7 @@ export const connectTestDB = async () => {
 
   if (mongoose.connection.readyState === 0) {
     await mongoose.connect(
-      "mongodb+srv://ponzu:qRX9hAAIMBRKReND@dbtask.ec8ughh.mongodb.net/?appName=dbTask"
+      "mongodb+srv://USERNAME:PASSWORD@dbtask.ec8ughh.mongodb.net/?appName=dbTask"
     );
   }
 };
