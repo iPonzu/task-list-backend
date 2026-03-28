@@ -27,6 +27,7 @@ Apesar dos tropeços pelo caminho, utilizar ferramentas novas é com certeza uma
 * MongoDB / Mongoose
 * JWT para autenticação
 * Jest + Supertest para testes
+* Docker
 
 ---
 
@@ -48,7 +49,9 @@ npm install
 3. Crie um arquivo `.env` na raiz com as variáveis:
 
 ```env
-MONGO_URI = "mongodb+srv://ponzu:qRX9hAAIMBRKReND@dbtask.ec8ughh.mongodb.net/?appName=dbTask"
+MONGO_URI = "mongodb+srv://taskUser:taskuser@dbtask.ec8ughh.mongodb.net/tasklist?retryWrites=true&w=majority&appName=dbTask"
+PORT=3000
+JWT_SECRET: "your_jwt_secret_key"
 ```
 
 4. Rodando a aplicação:
@@ -85,6 +88,8 @@ src/
 ├─ __tests__/         # Testes unitários e integração
 │
 ├─ server.ts          # Servidor Express
+├─ Dockerfile
+├─ docker-compose.yml
 ```
 
 ---
@@ -168,21 +173,21 @@ Authorization: Bearer <TOKEN>
 
 | Método | Rota            | Descrição              | Body     |
 | ------ | --------------- | ---------------------- | -------- |
-| POST   | /api/lists      | Criar lista            | { name } |
-| GET    | /api/lists      | Buscar todas as listas | -        |
-| GET    | /api/lists/:id | Buscar lista por ID    | -        |
-| PUT    | /api/lists/:id | Atualizar lista        | { name } |
-| DELETE | /api/lists/:id | Deletar lista          | -        |
+| POST   | /lists      | Criar lista            | { name } |
+| GET    | /lists      | Buscar todas as listas | -        |
+| GET    | /lists/:id | Buscar lista por ID    | -        |
+| PUT    | /lists/:id | Atualizar lista        | { name } |
+| DELETE | /lists/:id | Deletar lista          | -        |
 
 ### Tarefas
 
 | Método | Rota            | Descrição            | Body                                                 |
 | ------ | --------------- | -------------------- | ---------------------------------------------------- |
-| POST   | /api/tasks      | Criar tarefa         | { title, description?, status?, dueDate?, listId? }  |
-| GET    | /api/tasks      | Buscar tarefas       | query: status?, dueDate?, listId?                    |
-| GET    | /api/tasks/:id | Buscar tarefa por ID | -                                                    |
-| PUT    | /api/tasks/:id | Atualizar tarefa     | { title?, description?, status?, dueDate?, listId? } |
-| DELETE | /api/tasks/:id | Deletar tarefa       | -                                                    |
+| POST   | /tasks      | Criar tarefa         | { title, description?, status?, dueDate?, listId? }  |
+| GET    | /tasks      | Buscar tarefas       | query: status?, dueDate?, listId?                    |
+| GET    | /tasks/:id | Buscar tarefa por ID | -                                                    |
+| PUT    | /tasks/:id | Atualizar tarefa     | { title?, description?, status?, dueDate?, listId? } |
+| DELETE | /tasks/:id | Deletar tarefa       | -                                                    |
 
 > Todas as rotas protegidas exigem `Authorization: Bearer <TOKEN>`.
 
@@ -208,7 +213,6 @@ npm run test
 
 ## Observações
 
-* Sempre valide datas enviadas para a API (`yyyy-mm-dd`) para evitar erros de conversão.
 * Se quiser usar MongoDB Atlas, adicione seu IP na whitelist.
 * Para desenvolvimento, recomenda-se usar `.env` com `MONGO_URI` e `JWT_SECRET` locais.
 
