@@ -2,7 +2,7 @@
 
 API desenvolvida em **Node.js**, **Express**, **TypeScript** e **MongoDB** para gerenciamento de usuários, listas e tarefas. 
 Foi extremamente gratificante poder ter a oportunidade de apresentar meus conhecimentos em forma de projeto. 
-Apesar dos tropeços pelo caminho, utilizar ferramentas novas é com certeza uma forma de inovação!
+Utilizar ferramentas novas é com certeza uma forma de inovação!
 
 ---
 
@@ -37,7 +37,7 @@ Apesar dos tropeços pelo caminho, utilizar ferramentas novas é com certeza uma
 
 ```bash
 git clone https://github.com/seu-usuario/task-list-backend.git
-cd tasklist
+cd task-list-backend
 ```
 
 2. Instale as dependências:
