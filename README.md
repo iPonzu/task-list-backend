@@ -166,8 +166,8 @@ Authorization: Bearer <TOKEN>
 
 | Método | Rota       | Descrição           | Body                   |
 | ------ | ---------- | ------------------- | ---------------------- |
-| POST   | /api/register | Criar usuário       | { username, password } |
-| POST   | /api/login | Login e gerar token | { username, password } |
+| POST   | /register | Criar usuário       | { username, password } |
+| POST   | /login | Login e gerar token | { username, password } |
 
 ### Listas
 
